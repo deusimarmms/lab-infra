@@ -1,0 +1,20 @@
+name: Deploy HML
+
+on:
+  push:
+    branches:
+      - hml
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, hml]
+    environment: hml
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Simular deploy em HML
+        run: |
+          echo "Deploy em HML iniciado"
+          echo "Rodando no runner: $(hostname)"
+          docker ps
