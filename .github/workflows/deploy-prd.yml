@@ -1,0 +1,31 @@
+name: Deploy PRD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-prd-01:
+    runs-on: [self-hosted, prd-01]
+    environment: prd
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+      - name: Simular deploy em PRD-01
+        run: |
+          echo "Deploy em PRD-01 iniciado"
+          echo "Rodando no runner: $(hostname)"
+          docker ps
+
+  deploy-prd-02:
+    runs-on: [self-hosted, prd-02]
+    environment: prd
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+      - name: Simular deploy em PRD-02
+        run: |
+          echo "Deploy em PRD-02 iniciado"
+          echo "Rodando no runner: $(hostname)"
+          docker ps
