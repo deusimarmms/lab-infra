@@ -1,0 +1,19 @@
+name: Teste Runner Dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  teste:
+    runs-on: [self-hosted, dev]
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Mostrar informações do sistema
+        run: |
+          echo "Rodando no runner: $(hostname)"
+          echo "IP: $(hostname -I)"
+          docker --version
